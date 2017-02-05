@@ -22,8 +22,8 @@ class TicTacToe {
     isFinished() {
         // checks draw status
         for(rowIndex=0; rowIndex<3; rowIndex++){
-            for(colIndex=0; colIndex,3 colIndex++){
-                if (!=null){
+            for(colIndex=0; colIndex<3; colIndex++){
+                if (matrix[rowIndex][colIndex]!=null){
                     return true;
                 }
             }
