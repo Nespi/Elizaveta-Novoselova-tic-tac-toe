@@ -15,13 +15,9 @@ class TicTacToe {
         if(this.matrix[rowIndex][colIndex] == null) {
             this.matrix[rowIndex][colIndex] = this.currentPlayerSymbol;
 
-            console.log(this.matrix[rowIndex][colIndex]);
-
             if (this.currentPlayerSymbol == "x") {
-                console.log("2o");
                 this.currentPlayerSymbol = "o";
             } else {
-                console.log("2x");
                 this.currentPlayerSymbol = "x";
             }
             this.isFinished();
@@ -29,24 +25,33 @@ class TicTacToe {
     }
 
     isFinished() {
-        // checks rows
+        // checks win rows
         for(var rowIndex=0; rowIndex<3; rowIndex++){
-            if (this.matrix[rowIndex][0] == this.matrix[rowIndex][1]  == this.matrix[rowIndex][2]){
+            if (this.matrix[rowIndex][0] == this.matrix[rowIndex][1]
+                && this.matrix[rowIndex][0] == this.matrix[rowIndex][2]
+                    && this.matrix[rowIndex][0] != null){
                 this.winnerSymbol = this.matrix[rowIndex][0];
                 return true;
             }
         }
-        // check cols
+        // check win cols
         for(var colIndex=0; colIndex<3; colIndex++){
-            if (this.matrix[0][colIndex] == this.matrix[1][colIndex] == this.matrix[2][colIndex]){
+            if (this.matrix[0][colIndex] == this.matrix[1][colIndex]
+                && this.matrix[0][colIndex] == this.matrix[2][colIndex]
+                    && this.matrix[0][colIndex] != null){
                 this.winnerSymbol = this.matrix[0][colIndex];
                 return true;
             }
         }
-        // check diags
-        if ((this.matrix[0][0] == this.matrix[1][1] == this.matrix[2][2])||(this.matrix[0][2] == this.matrix[1][1] == this.matrix[2][0])){
-            this.winnerSymbol = this.matrix[1][1];
-           return true;
+        // check win diags
+        if ((this.matrix[0][0] == this.matrix[1][1]
+            && this.matrix[0][0] == this.matrix[2][2]
+                && this.matrix[0][0] != null)
+            ||(this.matrix[0][2] == this.matrix[1][1]
+                && this.matrix[0][2] == this.matrix[2][0]
+                    && this.matrix[0][2] != null)){
+                this.winnerSymbol = this.matrix[1][1];
+                return true;
         }
         return false;
     }
@@ -63,6 +68,7 @@ class TicTacToe {
                 }
             }
         }
+        return true;
     }
 
     isDraw() {
