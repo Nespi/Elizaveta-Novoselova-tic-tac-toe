@@ -20,20 +20,37 @@ class TicTacToe {
     }
 
     isFinished() {
+        // checks draw status
+        for(rowIndex=0; rowIndex<3; rowIndex++){
+            for(colIndex=0; colIndex,3 colIndex++){
+                if (!=null){
+                    return true;
+                }
+            }
+        }
 
         // checks rows
         for(rowIndex=0; rowIndex<3; rowIndex++){
-            for(colIndex=0; colIndex<3; colIndex++) {
-                if(matrix[rowIndex][rowIndex] != 'x') {
-                    break;
-                } else {}
-
+            if (matrix[rowIndex][0] == matrix[rowIndex][1]  == matrix[rowIndex][2]){
+                return true;
             }
         }
-        // check cols
-        // chech diag
 
+        // check cols
+        for(colIndex=0; colIndex<3; colIndex++){
+            if (matrix[0][colIndex] == matrix[1][colIndex] == matrix[2][colIndex]){
+                return true;
+            }
+        }
+        // chech diag
+        if ((matrix[0][0] == matrix[1][1] == matrix[2][2]) || (matrix[0][2] == matrix[1][1] == matrix[2][0])){
+           return true;
+        }
+
+        return false;
     }
+
+
 
     getWinner() {
 
